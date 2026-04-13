@@ -1,0 +1,28 @@
+<section class="analytics-card">
+  <h3>📊 Salary analytics</h3>
+
+  <div class="filter">
+    <input placeholder="Country" [(ngModel)]="country" />
+    <button (click)="fetch()">Get analytics</button>
+  </div>
+
+  <!-- SHOW DATA -->
+  <div class="stats" *ngIf="stats">
+
+    <div class="stat-box min">
+      <h4>Minimum Salary</h4>
+      <p>₹ {{ stats.min_salary }}</p>
+    </div>
+
+    <div class="stat-box avg">
+      <h4>Average Salary</h4>
+      <p>₹ {{ stats.avg_salary | number:'1.0-0' }}</p>
+    </div>
+
+    <div class="stat-box max">
+      <h4>Maximum Salary</h4>
+      <p>₹ {{ stats.max_salary }}</p>
+    </div>
+
+  </div>
+</section>

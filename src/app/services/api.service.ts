@@ -31,4 +31,15 @@ export class ApiService {
     return this.http.delete(`${this.baseUrl}/employees/${id}`);
   }
 
+  getSalaryByCountry(country: string) {
+    return this.http.get(
+      `${this.baseUrl}/insights/salary_by_country?country=${country}`
+    );
+  }
+
+  getSalaryByJob(country: string, job: string) {
+    return this.http.get(
+      `${this.baseUrl}/insights/salary_by_job?country=${country}&job_title=${job}`
+    );
+  }
 }

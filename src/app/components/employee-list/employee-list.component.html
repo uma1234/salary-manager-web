@@ -1,0 +1,36 @@
+<section class="table-card">
+  <h3>📋 Employee List</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Job</th>
+        <th>Country</th>
+        <th>Salary</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let e of employees">
+        <td>{{ e.first_name }} {{ e.last_name }}</td>
+        <td>{{ e.job_title }}</td>
+        <td>{{ e.country }}</td>
+        <td>₹ {{ e.salary }}</td>
+
+        <td class="actions">
+          <span class="icon edit" (click)="editEmployee(e)"></span>
+          <span class="icon delete" (click)="deleteEmployee(e.id)"></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- PAGINATION -->
+  <div class="pagination">
+    <button (click)="prevPage()">⬅ Prev</button>
+    <span>Page {{ page }}</span>
+    <button (click)="nextPage()">Next ➡</button>
+  </div>
+</section>

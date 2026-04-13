@@ -1,0 +1,126 @@
+/* CARD */
+.table-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* TITLE */
+.table-card h3 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* TABLE */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+/* HEADER */
+th {
+  background: #4f46e5;
+  color: white;
+  padding: 10px;
+  text-align: left;
+}
+
+/* ROWS */
+td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/* HOVER EFFECT */
+tr:hover {
+  background: #f9fafb;
+}
+
+/* ACTION COLUMN */
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* ICONS */
+.icon {
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+/* EDIT ICON */
+.edit {
+  color: #f59e0b;
+}
+
+.edit:hover {
+  transform: scale(1.2);
+}
+
+/* DELETE ICON */
+.delete {
+  color: #ef4444;
+}
+
+.delete:hover {
+  transform: scale(1.2);
+}
+
+/* PAGINATION */
+.pagination {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* PAGINATION BUTTON */
+.pagination button {
+  padding: 6px 12px;
+  border: none;
+  background: #4f46e5;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.pagination button:hover {
+  background: #4338ca;
+}
+
+/* ACTION COLUMN */
+.actions {
+  display: flex;
+  gap: 12px;
+}
+
+/* BASE ICON */
+.icon {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+}
+
+/* EDIT ICON */
+.edit::before {
+  content: "✏";
+  color: #f59e0b;
+  font-size: 16px;
+}
+
+/* DELETE ICON */
+.delete::before {
+  content: "🗑";
+  color: #ef4444;
+  font-size: 16px;
+}
+
+/* HOVER EFFECT */
+.icon:hover {
+  transform: scale(1.2);
+}

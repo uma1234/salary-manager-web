@@ -1,0 +1,74 @@
+
+/* CARD */
+.analytics-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* FILTER */
+.filter {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filter input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.filter button {
+  padding: 10px 15px;
+  background: #06b6d4;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.filter button:hover {
+  background: #0891b2;
+}
+
+/* STATS GRID */
+.stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+/* STAT BOX */
+.stat-box {
+  padding: 15px;
+  border-radius: 10px;
+  color: white;
+}
+
+/* COLORS */
+.min {
+  background: #f59e0b;
+}
+
+.avg {
+  background: #4f46e5;
+}
+
+.max {
+  background: #16a34a;
+}
+
+/* TEXT */
+.stat-box h4 {
+  margin: 0;
+  font-size: 14px;
+}
+
+.stat-box p {
+  margin: 5px 0 0;
+  font-size: 18px;
+  font-weight: bold;
+}
