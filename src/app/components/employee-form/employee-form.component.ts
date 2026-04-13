@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { FormsModule } from '@angular/forms';
+import { DataService } from '../../services/data.service';
+import { DataStateService } from '../../services/data-state.service';
 
 @Component({
   selector: 'app-employee-form',
@@ -20,15 +22,31 @@ employee: any = {
 };
   // employee: any = {};
 
- constructor(private api: ApiService) {}
+  countries: string[] = [];
+  jobTitles: string[] = [];
+  departments: string[] = [];
+
+ constructor(private api: ApiService, private datastateApi: DataStateService) {}
 
  ngOnInit() {
-  this.api.selectedEmployee.subscribe((emp) => {
-    if (emp) {
-      this.employee = { ...emp };
-    }
-  });
-}
+    this.api.selectedEmployee.subscribe((emp) => {
+      if (emp) {
+        this.employee = { ...emp };
+      }
+    });
+
+    // ADD THIS (fetch dropdown data)
+   this.datastateApi.data$.subscribe(data => {
+      if (data) {
+        this.countries = data.countries;
+        this.jobTitles = data.job_titles;
+        this.departments = data.departments;
+      }
+    });
+
+  }
+
+   
   submit() {
     this.api.addEmployee(this.employee).subscribe({
       next: () => {

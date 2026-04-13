@@ -31,7 +31,7 @@
 }
 
 /* INPUTS */
-.filter-box input {
+.filter-box input ,.filter-box select{
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;

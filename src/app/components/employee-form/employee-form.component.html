@@ -24,10 +24,31 @@
     </div>
 
     <div class="form-group">
-      <label>Country</label>
-      <input [(ngModel)]="employee.country" placeholder="Enter country" />
+      <label>Job Title</label>
+
+      <select [(ngModel)]="employee.country">
+        <option value="">Select Job Title</option>
+
+        <option *ngFor="let j of jobTitles" [value]="j">
+          {{ j }}
+        </option>
+
+      </select>
     </div>
 
+    <div class="form-group">
+      <label>Country</label>
+
+      <select [(ngModel)]="employee.country">
+        <option value="">Select Country</option>
+
+        <option *ngFor="let c of countries" [value]="c">
+          {{ c }}
+        </option>
+
+      </select>
+    </div>
+    
     <div class="form-group">
       <label>Salary</label>
       <input type="number" [(ngModel)]="employee.salary" placeholder="Enter salary" />
@@ -35,7 +56,14 @@
 
     <div class="form-group">
       <label>Department</label>
-      <input [(ngModel)]="employee.department" placeholder="Enter department" />
+
+      <select [(ngModel)]="employee.department">
+        <option value="">Select department</option>
+
+        <option *ngFor="let d of departments" [value]="d">
+          {{ d }}
+        </option>
+      </select>
     </div>
 
   </div>

@@ -34,7 +34,8 @@
 }
 
 /* INPUT */
-.form-group input {
+.form-group input,
+.form-group select {
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -43,7 +44,8 @@
 }
 
 /* INPUT FOCUS */
-.form-group input:focus {
+.form-group input:focus,
+.form-group select:focus {
   border-color: #06b6d4;
   outline: none;
   box-shadow: 0 0 3px rgba(79, 70, 229, 0.3);

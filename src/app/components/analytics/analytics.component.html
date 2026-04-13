@@ -4,18 +4,20 @@
 
   <!-- ================= COUNTRY ANALYTICS ================= -->
   <div class="filter-box">
-
     <h3>Country  Salary Analytics</h3>
+    <div class="form-group">
+      <select [(ngModel)]="country">
+        <option value="">Select Country</option>
 
-    <input
-      placeholder="Enter Country"
-      [(ngModel)]="country"
-    />
+        <option *ngFor="let c of countries" [value]="c">
+          {{ c }}
+        </option>
 
+      </select>
+    </div>
     <button (click)="fetchCountryBySalary()">
       Get Analytics
     </button>
-
     <div class="stats" *ngIf="stats">
 
       <div class="stat-box min">
@@ -39,19 +41,31 @@
   <hr />
 
   <!-- ================= JOB ANALYTICS ================= -->
+
   <div class="filter-box">
-
     <h3> Country Job  Avg Salary  Analytics</h3>
+    <div class="form-group">
+      <select [(ngModel)]="countryForJob">
+        <option value="">Select Country</option>
+        <option *ngFor="let c of countries" [value]="c">
+          {{ c }}
+        </option>
 
-    <input
-      placeholder="Enter Country"
-      [(ngModel)]="countryForJob"
-    />
+      </select>
+    </div>
+  
+    <div class="form-group">
+      <select [(ngModel)]="job">
+        <option value="">Select Job</option>
+        <option *ngFor="let j of jobTitles" [value]="j">
+          {{ j }}
+        </option>
 
-    <input
-      placeholder="Enter Job Title"
-      [(ngModel)]="job"
-    />
+      </select>
+    </div>
+    
+
+
     <button (click)="fetchCountryJobBySalary()">
       Get Analytics
     </button>
@@ -68,30 +82,33 @@
 
   <hr />
 
-    <div class="filter-box">
+  <div class="filter-box">
+      <h3> Country Department  Avg Salary  Analytics</h3>
+      <div class="form-group">
+        <select [(ngModel)]="countryForDept">
+          <option value="">Select Country</option>
 
-        <h3> Country Department  Avg Salary  Analytics</h3>
+          <option *ngFor="let c of countries" [value]="c">
+            {{ c }}
+          </option>
 
-        <input
-        placeholder="Enter Country"
-        [(ngModel)]="countryForDept"
-        />
+        </select>
+      </div>
+      
 
-        <button (click)="fetchDepartmentCountry()">
-        Get Analytics
-        </button>
+      <button (click)="fetchDepartmentCountry()">
+      Get Analytics
+      </button>
 
-        <div class="stats" *ngIf="departmentCountrys">
+      <div class="stats" *ngIf="departmentCountrys">  
+          <div class="stat-box max"
+          *ngFor="let item of departmentCountrys | keyvalue">
 
-       
-            <div class="stat-box max"
-            *ngFor="let item of departmentCountrys | keyvalue">
+          <h4>{{ item.key }}</h4>
 
-            <h4>{{ item.key }}</h4>
+          <p> {{ item.value | number:'1.0-0' }}</p>
 
-            <p> {{ item.value | number:'1.0-0' }}</p>
+          </div>
 
-            </div>
-
-        </div>
-    </div>
+      </div>
+  </div>
