@@ -14,6 +14,11 @@
     </div>
 
     <div class="form-group">
+      <label>Email</label>
+      <input [(ngModel)]="employee.email" placeholder="Enter email" />
+    </div>
+
+    <div class="form-group">
       <label>Job Title</label>
       <input [(ngModel)]="employee.job_title" placeholder="Enter job title" />
     </div>
@@ -36,8 +41,8 @@
   </div>
 
   <div class="button-group">
-    <button class="btn primary" (click)="submit()">➕ Add</button>
+    <button class="btn primary" (click)="submit()">Add</button>
     <button class="btn success" (click)="update()" *ngIf="employee.id">✏ Update</button>
-    <button class="btn reset" (click)="reset()">🔄 Reset</button>
+    <button class="btn reset" (click)="reset()">Reset</button>
   </div>
 </section>

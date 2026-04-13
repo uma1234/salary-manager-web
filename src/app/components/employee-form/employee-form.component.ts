@@ -12,6 +12,7 @@ export class EmployeeFormComponent {
 employee: any = {
   first_name: '',
   last_name: '',
+  email:'',
   job_title: '',
   country: '',
   salary: 0,
@@ -35,6 +36,7 @@ employee: any = {
         this.employee = {
           first_name: '',
           last_name: '',
+          email: '',
           job_title: '',
           country: '',
           salary: 0,
@@ -42,10 +44,10 @@ employee: any = {
         };
       },
       error: (err) => {
-        console.log('❌ FULL ERROR:', err);
-        console.log('❌ ERROR STATUS:', err.status);
-        console.log('❌ ERROR MESSAGE:', err.message);
-        console.log('❌ ERROR BODY:', err.error);
+        console.log(' FULL ERROR:', err);
+        console.log(' ERROR STATUS:', err.status);
+        console.log('ERROR MESSAGE:', err.message);
+        console.log(' ERROR BODY:', err.error);
 
         alert('Failed to add employee');
       }

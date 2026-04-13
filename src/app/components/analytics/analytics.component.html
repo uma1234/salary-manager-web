@@ -1,28 +1,97 @@
 <section class="analytics-card">
-  <h3>📊 Salary analytics</h3>
 
-  <div class="filter">
-    <input placeholder="Country" [(ngModel)]="country" />
-    <button (click)="fetch()">Get analytics</button>
+  <h2>Salary Analytics Dashboard</h2>
+
+  <!-- ================= COUNTRY ANALYTICS ================= -->
+  <div class="filter-box">
+
+    <h3>Country  Salary Analytics</h3>
+
+    <input
+      placeholder="Enter Country"
+      [(ngModel)]="country"
+    />
+
+    <button (click)="fetchCountryBySalary()">
+      Get Analytics
+    </button>
+
+    <div class="stats" *ngIf="stats">
+
+      <div class="stat-box min">
+        <h4>Minimum Salary</h4>
+        <p>₹ {{ stats.min }}</p>
+      </div>
+
+      <div class="stat-box avg">
+        <h4>Average Salary</h4>
+        <p>₹ {{ stats.avg | number:'1.0-0' }}</p>
+      </div>
+
+      <div class="stat-box max">
+        <h4>Maximum Salary</h4>
+        <p>₹ {{ stats.max }}</p>
+      </div>
+
+    </div>
   </div>
 
-  <!-- SHOW DATA -->
-  <div class="stats" *ngIf="stats">
+  <hr />
 
-    <div class="stat-box min">
-      <h4>Minimum Salary</h4>
-      <p>₹ {{ stats.min_salary }}</p>
+  <!-- ================= JOB ANALYTICS ================= -->
+  <div class="filter-box">
+
+    <h3> Country Job  Avg Salary  Analytics</h3>
+
+    <input
+      placeholder="Enter Country"
+      [(ngModel)]="countryForJob"
+    />
+
+    <input
+      placeholder="Enter Job Title"
+      [(ngModel)]="job"
+    />
+    <button (click)="fetchCountryJobBySalary()">
+      Get Analytics
+    </button>
+
+    <div class="stats" *ngIf="jobStats">
+
+      <div class="stat-box avg">
+        <h4>Average Salary</h4>
+        <p>₹ {{ jobStats.avg_salary | number:'1.0-0' }}</p>
+      </div>
+
     </div>
-
-    <div class="stat-box avg">
-      <h4>Average Salary</h4>
-      <p>₹ {{ stats.avg_salary | number:'1.0-0' }}</p>
-    </div>
-
-    <div class="stat-box max">
-      <h4>Maximum Salary</h4>
-      <p>₹ {{ stats.max_salary }}</p>
-    </div>
-
   </div>
-</section>
+
+  <hr />
+
+    <div class="filter-box">
+
+        <h3> Country Department  Avg Salary  Analytics</h3>
+
+        <input
+        placeholder="Enter Country"
+        [(ngModel)]="countryForDept"
+        />
+
+        <button (click)="fetchDepartmentCountry()">
+        Get Analytics
+        </button>
+
+        <div class="stats" *ngIf="departmentCountrys">
+
+       
+            <div class="stat-box max"
+            *ngFor="let item of departmentCountrys | keyvalue">
+
+            <h4>{{ item.key }}</h4>
+
+            <p> {{ item.value | number:'1.0-0' }}</p>
+
+            </div>
+
+        </div>
+    </div>

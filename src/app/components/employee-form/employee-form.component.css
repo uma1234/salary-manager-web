@@ -44,7 +44,7 @@
 
 /* INPUT FOCUS */
 .form-group input:focus {
-  border-color: #4f46e5;
+  border-color: #06b6d4;
   outline: none;
   box-shadow: 0 0 3px rgba(79, 70, 229, 0.3);
 }
@@ -67,12 +67,12 @@
 
 /* BUTTON COLORS */
 .primary {
-  background: #4f46e5;
+  background: #06b6d4;
   color: white;
 }
 
 .primary:hover {
-  background: #4338ca;
+  background: #06b6d4
 }
 
 .success {

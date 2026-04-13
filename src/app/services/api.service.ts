@@ -33,13 +33,27 @@ export class ApiService {
 
   getSalaryByCountry(country: string) {
     return this.http.get(
-      `${this.baseUrl}/insights/salary_by_country?country=${country}`
+      `${this.baseUrl}/analytics/country?country=${country}`
     );
   }
 
-  getSalaryByJob(country: string, job: string) {
+  // getSalaryByJob(country: string, job: string) {
+  //   return this.http.get(
+  //     `${this.baseUrl}/analytics/job?country=${country}&job_title=${job}`
+  //   );
+  // }
+
+   getDepartmentBreakdownByCountry(country: string) {
     return this.http.get(
-      `${this.baseUrl}/insights/salary_by_job?country=${country}&job_title=${job}`
+      `${this.baseUrl}/analytics/department?country=${country}`
     );
   }
+    getSalaryByJob(country: string, job: string) {
+      return this.http.get(`${this.baseUrl}/analytics/job`, {
+        params: {
+          country: country,
+          job_title: job
+        }
+      });
+    }
 }
