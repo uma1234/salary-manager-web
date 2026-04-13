@@ -1,0 +1,43 @@
+<section class="form-card">
+  <h3>👤 Employee Form</h3>
+
+  <div class="form-grid">
+
+    <div class="form-group">
+      <label>First Name</label>
+      <input [(ngModel)]="employee.first_name" placeholder="Enter first name" />
+    </div>
+
+    <div class="form-group">
+      <label>Last Name</label>
+      <input [(ngModel)]="employee.last_name" placeholder="Enter last name" />
+    </div>
+
+    <div class="form-group">
+      <label>Job Title</label>
+      <input [(ngModel)]="employee.job_title" placeholder="Enter job title" />
+    </div>
+
+    <div class="form-group">
+      <label>Country</label>
+      <input [(ngModel)]="employee.country" placeholder="Enter country" />
+    </div>
+
+    <div class="form-group">
+      <label>Salary</label>
+      <input type="number" [(ngModel)]="employee.salary" placeholder="Enter salary" />
+    </div>
+
+    <div class="form-group">
+      <label>Department</label>
+      <input [(ngModel)]="employee.department" placeholder="Enter department" />
+    </div>
+
+  </div>
+
+  <div class="button-group">
+    <button class="btn primary" (click)="submit()">➕ Add</button>
+    <button class="btn success" (click)="update()" *ngIf="employee.id">✏ Update</button>
+    <button class="btn reset" (click)="reset()">🔄 Reset</button>
+  </div>
+</section>
