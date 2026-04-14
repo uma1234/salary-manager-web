@@ -7,27 +7,48 @@ import { ApiService } from '../../services/api.service';
   styleUrl: './employee-list.component.css'
 })
 export class EmployeeListComponent {
-  
-   employees: any[] = [];
-   page = 1;
+
+  employees: any[] = [];
+  filteredEmployees: any[] = [];   // ✅ REQUIRED FOR TEMPLATE
+
+  page = 1;
   pageSize = 10;
+  searchTerm: string = '';
+
   constructor(private api: ApiService) {}
 
   ngOnInit() {
     this.load();
   }
 
+  // LOAD DATA (with search + pagination from backend)
   load() {
-    this.api.getEmployees(this.page).subscribe((data: any) => {
+    this.api.getEmployees(this.page, this.searchTerm).subscribe((data: any) => {
       this.employees = data;
+      this.filteredEmployees = data; //for UI
     });
   }
 
+  // SEARCH BUTTON CLICK
+  searchEmployees() {
+    this.page = 1;
+    this.load();
+  }
+
+  // CLEAR BUTTON
+  clearSearch() {
+    this.searchTerm = '';
+    this.page = 1;
+    this.load();
+  }
+
+  // NEXT PAGE
   nextPage() {
     this.page++;
     this.load();
   }
 
+  // PREVIOUS PAGE
   prevPage() {
     if (this.page > 1) {
       this.page--;
@@ -35,24 +56,19 @@ export class EmployeeListComponent {
     }
   }
 
-
-    // ✅ EDIT
+  // EDIT
   editEmployee(emp: any) {
     console.log('Edit clicked:', emp);
-
-    // send data to form using shared service
     this.api.selectedEmployee.next(emp);
   }
 
-  // ✅ DELETE
+  // DELETE
   deleteEmployee(id: number) {
-    console.log('Delete clicked:', id);
-
     if (confirm('Are you sure you want to delete?')) {
       this.api.deleteEmployee(id).subscribe({
         next: () => {
           alert('Employee Deleted');
-          this.load(); // reload table
+          this.load();
         },
         error: (err) => {
           console.error(err);
@@ -61,9 +77,4 @@ export class EmployeeListComponent {
       });
     }
   }
-
-
 }
-
-
-

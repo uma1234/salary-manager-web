@@ -11,8 +11,19 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
 
-  getEmployees(page: number) {
-    return this.http.get(`${this.baseUrl}/employees?page=${page}`);
+  // getEmployees(page: number) {
+  //   return this.http.get(`${this.baseUrl}/employees?page=${page}`);
+  // }
+
+  getEmployees(page: number, search: string) {
+    let url = `${this.baseUrl}/employees?page=${page}`;
+
+    // only add search if not empty
+    if (search && search.trim() !== '') {
+      url += `&search=${encodeURIComponent(search)}`;
+    }
+
+    return this.http.get(url);
   }
 
   addEmployee(data: any) {

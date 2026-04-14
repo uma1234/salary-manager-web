@@ -1,38 +1,62 @@
 <section class="table-card">
   <h3>Employee List</h3>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Job</th>
-        <th>Country</th>
-        <th>Salary</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
+  <!-- SEARCH -->
+  <div class="search-box">
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      placeholder="Search by name, email, job..."
+    />
 
-    <tbody>
-      <tr *ngFor="let e of employees">
-        <td>{{ e.first_name }} {{ e.last_name }}</td>
-        <td>{{e.email}}</td>
-        <td>{{ e.job_title }}</td>
-        <td>{{ e.country }}</td>
-        <td>₹ {{ e.salary }}</td>
+    <button (click)="searchEmployees()">Search</button>
 
-        <td class="actions">
-          <span class="icon edit" (click)="editEmployee(e)"></span>
-          <span class="icon delete" (click)="deleteEmployee(e.id)"></span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+    <button
+      (click)="searchTerm=''; searchEmployees()"
+    >
+      Clear
+    </button>
+  </div>
 
-  <!-- PAGINATION -->
-  <div class="pagination">
-    <button (click)="prevPage()">⬅ Prev</button>
-    <span>Page {{ page }}</span>
-    <button (click)="nextPage()">Next ➡</button>
+  <!-- NO DATA MESSAGE -->
+  <div *ngIf="filteredEmployees.length === 0" class="no-data">
+    No employees found.
+  </div>
+
+  <!-- TABLE (ONLY IF DATA EXISTS) -->
+  <div  *ngIf="filteredEmployees.length > 0">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Job</th>
+          <th>Country</th>
+          <th>Salary</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let e of filteredEmployees">
+          <td>{{ e.first_name }} {{ e.last_name }}</td>
+          <td>{{ e.email }}</td>
+          <td>{{ e.job_title }}</td>
+          <td>{{ e.country }}</td>
+          <td>₹ {{ e.salary }}</td>
+
+          <td class="actions">
+            <span class="icon edit" (click)="editEmployee(e)"></span>
+            <span class="icon delete" (click)="deleteEmployee(e.id)"></span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- PAGINATION -->
+    <div class="pagination">
+      <button (click)="prevPage()">⬅ Prev</button>
+      <span>Page {{ page }}</span>
+      <button (click)="nextPage()">Next ➡</button>
+    </div>
   </div>
 </section>
