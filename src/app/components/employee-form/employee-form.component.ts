@@ -25,6 +25,7 @@ employee: any = {
   countries: string[] = [];
   jobTitles: string[] = [];
   departments: string[] = [];
+  fieldErrors: any = null;
 
  constructor(private api: ApiService, private datastateApi: DataStateService) {}
 
@@ -46,11 +47,11 @@ employee: any = {
 
   }
 
-   
   submit() {
     this.api.addEmployee(this.employee).subscribe({
       next: () => {
         alert('Employee Added');
+
         this.employee = {
           first_name: '',
           last_name: '',
@@ -60,14 +61,16 @@ employee: any = {
           salary: 0,
           department: ''
         };
-      },
-      error: (err) => {
-        console.log(' FULL ERROR:', err);
-        console.log(' ERROR STATUS:', err.status);
-        console.log('ERROR MESSAGE:', err.message);
-        console.log(' ERROR BODY:', err.error);
 
-        alert('Failed to add employee');
+        // clear errors on success
+        this.fieldErrors = {};
+      },
+
+      error: (err) => {
+        console.log('FULL ERROR:', err);
+
+        // ⭐ directly map Rails errors
+        this.fieldErrors = err.error?.errors || {};
       }
     });
   }

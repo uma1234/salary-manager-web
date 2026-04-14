@@ -1,6 +1,10 @@
 <section class="form-card">
   <h3>Employee Form</h3>
-
+  <div *ngIf="fieldErrors | keyvalue as errors" class="error-box">
+    <div *ngFor="let e of errors" class="error-item">
+      {{e.key}} {{ e.value }}
+    </div>
+  </div>
   <div class="form-grid">
 
     <div class="form-group">
