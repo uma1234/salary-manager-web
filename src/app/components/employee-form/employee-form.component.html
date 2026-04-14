@@ -1,27 +1,47 @@
 <section class="form-card">
   <h3>Employee Form</h3>
-  <div *ngIf="fieldErrors | keyvalue as errors" class="error-box">
-    <div *ngFor="let e of errors" class="error-item">
-      {{e.key}} {{ e.value }}
-    </div>
-  </div>
+  
   <div class="form-grid">
 
     <div class="form-group">
       <label>First Name</label>
       <input [(ngModel)]="employee.first_name" placeholder="Enter first name" />
-    </div>
+      <div class="error" *ngIf="fieldErrors.first_name">
+          {{ fieldErrors.first_name }}
+        </div>    
+      </div>
 
     <div class="form-group">
       <label>Last Name</label>
       <input [(ngModel)]="employee.last_name" placeholder="Enter last name" />
+      <div class="error" *ngIf="fieldErrors.last_name">
+        {{ fieldErrors.last_name }}
+      </div>
     </div>
 
     <div class="form-group">
       <label>Email</label>
       <input [(ngModel)]="employee.email" placeholder="Enter email" />
+      <div class="error" *ngIf="fieldErrors.email">
+        {{ fieldErrors.email }}
+      </div>
     </div>
 
+
+    <div class="form-group">
+      <label>Department</label>
+
+      <select [(ngModel)]="employee.department">
+        <option value="">Select department</option>
+
+        <option *ngFor="let d of departments" [value]="d">
+          {{ d }}
+        </option>
+      </select>
+      <div class="error" *ngIf="fieldErrors.department">
+        {{ fieldErrors.department }}
+      </div>
+    </div>
 
     <div class="form-group">
       <label>Job Title</label>
@@ -34,6 +54,17 @@
         </option>
 
       </select>
+      <div class="error" *ngIf="fieldErrors.job_title">
+        {{ fieldErrors.job_title }}
+      </div>
+    </div>
+
+     <div class="form-group">
+      <label>Salary</label>
+      <input type="number" [(ngModel)]="employee.salary" placeholder="Enter salary" />
+      <div class="error" *ngIf="fieldErrors.salary">
+        {{ fieldErrors.salary }}
+      </div>
     </div>
 
     <div class="form-group">
@@ -47,25 +78,11 @@
         </option>
 
       </select>
+      <div class="error" *ngIf="fieldErrors.country">
+        {{ fieldErrors.country }}
+      </div>
     </div>
     
-    <div class="form-group">
-      <label>Salary</label>
-      <input type="number" [(ngModel)]="employee.salary" placeholder="Enter salary" />
-    </div>
-
-    <div class="form-group">
-      <label>Department</label>
-
-      <select [(ngModel)]="employee.department">
-        <option value="">Select department</option>
-
-        <option *ngFor="let d of departments" [value]="d">
-          {{ d }}
-        </option>
-      </select>
-    </div>
-
   </div>
 
   <div class="button-group">
